@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirección a Tienda en Línea</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url('img/BannerAds.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 1rem;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loader"></div>
+        <h1>Redireccionando a la Tienda en Línea</h1>
+        <p>Serás redirigido automáticamente a nuestra tienda en línea de producción en unos momentos.</p>
+        <p>Si la redirección no ocurre automáticamente, por favor haz clic en el siguiente enlace:</p>
+        <a href="#" id="redirect-link" style="color: #3498db; text-decoration: none;">Ir a la Tienda en Línea</a>
+    </div>
+
+    <script>
+        // Función para obtener parámetros de la URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Obtener la URL de redirección del parámetro
+        var redirectUrl = getUrlParameter('url');
+        
+        // Si no hay URL especificada, usar una por defecto
+        if (!redirectUrl) {
+            redirectUrl = 'https://outletshop62.mitiendanube.com/';
+        }
+
+        // Actualizar el enlace
+        document.getElementById('redirect-link').href = redirectUrl;
+
+        // Redirección automática después de 1 segundo
+        setTimeout(function() {
+            window.location.href = redirectUrl;
+        }, 1000);
+    </script>
+</body>
+</html> 
